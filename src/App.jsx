@@ -1,14 +1,17 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { Container, Row, Col } from "react-grid-system";
+import { Container } from "react-grid-system";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Page1 from "./pages/Home";
+import Home from "./pages/Home";
 import Page2 from "./pages/Page2";
 import NextWeek from "./pages/NextWeek";
 
 import "./App.css";
+
+const queryClient = new QueryClient();
 
 const BasicLayout = () => {
 	return (
@@ -27,7 +30,7 @@ function App() {
 			children: [
 				{
 					path: "/",
-					element: <Page1 />,
+					element: <Home />,
 				},
 				{
 					path: "/page2",
@@ -40,7 +43,11 @@ function App() {
 			],
 		},
 	]);
-	return <RouterProvider router={router} />;
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+		</QueryClientProvider>
+	);
 }
 
 export default App;
