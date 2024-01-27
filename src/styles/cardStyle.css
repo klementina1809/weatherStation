@@ -1,15 +1,27 @@
 .product-card {
-	min-height: 300px;
-	background-color: #3b3b3b;
+	min-height: 350px;
 	border-radius: 16px;
 	margin-bottom: 20px;
 	padding: 10px 20px;
+	background-color: #3b3b3b;
 }
 
 .product-card h4 {
 	font-size: 26px;
 	margin-bottom: 8px;
 	margin-top: 4px;
+	color: #31e3df;
+}
+
+.product-card h5 {
+	font-size: 20px;
+	margin-bottom: 8px;
+	margin-top: 4px;
+	color: #31e3df;
+}
+
+.product-card h6 {
+	font-size: 18px;
 }
 
 .label-container {
@@ -17,11 +29,12 @@
 	justify-content: space-between;
 	align-items: center;
 	padding-inline: 20px;
+
 }
 
-.description-container{
-	height: 70px;
+.description-container {
 	margin-bottom: 10px;
+	color: rgb(185, 185, 185);
 }
 
 img {

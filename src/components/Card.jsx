@@ -8,8 +8,8 @@ function Card({ label, description, images, price }) {
 		<Col sm={4}>
 			<div className="product-card">
 				<div className="label-container">
-					<h4>{label}</h4>
-					<h5>{price}$</h5>
+					{label.length > 10 ? <h5>{label}</h5> : <h4>{label}</h4>}
+					<h6>{price}$</h6>
 				</div>
 				<div className="description-container">
 					<p>{description}</p>

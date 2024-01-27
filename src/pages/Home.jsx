@@ -23,7 +23,9 @@ function Home() {
 	return (
 		<Container>
 			<Row>
-				<h2>Home</h2>
+				<Col sm={12} >
+					<h2>Home</h2>
+				</Col>
 			</Row>
 			<Cards data={products}/>
 		</Container>
