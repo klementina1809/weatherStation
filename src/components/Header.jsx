@@ -17,7 +17,7 @@ function Header() {
 							<NavLink to="/page2">Page2</NavLink>
 						</li>
 						<li>
-							<NavLink to="/next-week">Next Week</NavLink>
+							<NavLink to="/weather">Weather</NavLink>
 						</li>
 					</ul>
 				</Col>

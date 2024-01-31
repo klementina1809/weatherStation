@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Page2 from "./pages/Page2";
-import NextWeek from "./pages/NextWeek";
+import Weather from "./pages/Weather";
 
 import "./App.css";
 
@@ -37,8 +37,8 @@ function App() {
 					element: <Page2 />,
 				},
 				{
-					path: "/next-week",
-					element: <NextWeek />,
+					path: "/weather",
+					element: <Weather />,
 				},
 			],
 		},

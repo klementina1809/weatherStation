@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NextWeek() {
+function Weather() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function NextWeek() {
   )
 }
 
-export default NextWeek
+export default Weather
