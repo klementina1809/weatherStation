@@ -20,11 +20,12 @@ export const getGeoCode = async (city = "Arezzo") => {
 	const response = await axios.get(
 		`https://geocode.maps.co/search?city=${city}&api_key=${GC_API_KEY}`
 	);
-	console.log('response.data[0].lat',response.data[0].lat)
+	// console.log('response.data[0].lat',response.data[0].lat)
 	if (response.data.length === 0) return {};
 	else {
 		const lat = response.data[0].lat;
 		const lon = response.data[0].lon;
-		return [lat, lon];
+		const data = [lat, lon];
+		return data;
 	}
 };
