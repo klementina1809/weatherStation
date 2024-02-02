@@ -1,32 +1,35 @@
-import React from 'react';
-import { useState } from "react";
-import { useQuery } from "react-query";
-import { getProducts, getWeather, getGeoCode } from "../services/api";
+import React from "react";
+import { useState, useEffect } from "react";
+import { getWeather, getGeoCode } from "../services/api";
 
 function Weather() {
-  // const [geocode, setGeocode] = useState([]);
+	const [geocode, setGeocode] = useState([0, 0]);
+	const [weather, setWeather] = useState([]);
+	const [loading, setLoading] = useState(false);
 
-  const { isLoading } = useQuery({
-		queryKey: "geocode",
-		queryFn: () => getGeoCode('Milano'),
-		onSuccess: (data) => {
-			console.log("lat e lon", data);
-			// setProducts(data.products);
-		},
-	});
+	useEffect(() => {
+		async function getFirstData() {
+			const geo = await getGeoCode("Milano");
+			console.log("geo", geo);
+			setGeocode(geo);
+		}
+		setLoading(true);
 
+		getFirstData();
+	}, []);
 
+	useEffect(() => {
+		async function secondApi() {
+			const weather = await getWeather(geocode[0], geocode[1]);
+			console.log("w", weather);
+			setWeather(weather);
+			setLoading(false);
+		}
 
+		if (geocode[0] !== 0 && geocode[1] !== 0) secondApi();
+	}, [geocode]);
 
-
-
-
-  
-  return (
-    <div>
-      
-    </div>
-  )
+	return <div></div>;
 }
 
-export default Weather
+export default Weather;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { getProducts, getWeather, getGeoCode } from "../services/api";
+import { getProducts } from "../services/api";
 import { Container, Row, Col } from "react-grid-system";
 import Cards from "../components/Cards";
 
