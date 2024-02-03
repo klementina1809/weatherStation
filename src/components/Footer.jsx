@@ -3,15 +3,11 @@ import { Container, Row, Col } from "react-grid-system";
 
 function Footer() {
 	return (
-		<Container>
+		<footer>
 			<Row>
-				<Col sm={12}>
-        <footer>
-				© 2024 Klementina
-				</footer>
-        </Col>
+				<Col sm={12}>© 2024 Klementina</Col>
 			</Row>
-		</Container>
+		</footer>
 	);
 }
 

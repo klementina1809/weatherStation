@@ -1,28 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Container, Row, Col } from "react-grid-system";
+
+import { Row, Col } from "react-grid-system";
 
 import "../styles/headerStyle.css";
 
 function Header() {
 	return (
-		<Container>
-			<Row>
-				<Col sm={12}>
-					<ul className="navbar">
-						<li>
-							<NavLink to="/">Home</NavLink>
-						</li>
-						<li>
-							<NavLink to="/page2">Page2</NavLink>
-						</li>
-						<li>
-							<NavLink to="/weather">Weather</NavLink>
-						</li>
-					</ul>
-				</Col>
-			</Row>
-		</Container>
+		<Row>
+			<div className="logo-container">
+				<img src="/src/assets/logo.png" alt="Klementina_Weather" />
+			</div>
+		</Row>
 	);
 }
 

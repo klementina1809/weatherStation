@@ -8,12 +8,12 @@ import Button from "../components/Button";
 import CurrentWeather from "../components/CurrentWeather";
 
 import "../styles/inputStyle.css";
+import "../styles/weatherStyle.css";
 
 function Weather() {
 	const [geocode, setGeocode] = useState([0, 0]);
 	const [value, setValue] = useState("");
 	const [weather, setWeather] = useState([]);
-	const [cityName, setCityName] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	const inputHandler = (e) => {
@@ -21,19 +21,15 @@ function Weather() {
 	};
 
 	const searchWeather = () => {
-		setCityName(value);
-	};
-
-	useEffect(() => {
 		async function getFirstData() {
-			const geo = await getGeoCode(cityName);
+			const geo = await getGeoCode(value);
 			console.log("geo", geo);
 			setGeocode(geo);
 		}
 		setLoading(true);
 
 		getFirstData();
-	}, [cityName]);
+	};
 
 	useEffect(() => {
 		async function secondApi() {
@@ -53,13 +49,18 @@ function Weather() {
 					<Input
 						onchange={inputHandler}
 						value={value}
-						placeholder="City"
+						placeholder="Enter your city..."
 					/>
-					<Button onClick={searchWeather} label="Search" />
+					<Button className='btn' onClick={searchWeather} label="Search" />
 				</Col>
 			</Row>
 			<Row>
-				<Col sm={12} className="input-container">
+				<Col sm={12}>
+					<h1>Current Weather in Florence</h1>
+				</Col>
+			</Row>
+			<Row>
+				<Col sm={12}>
 					<CurrentWeather />
 				</Col>
 			</Row>
