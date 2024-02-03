@@ -1,7 +1,4 @@
 import React from "react";
-import { FaCloud } from "react-icons/fa";
-
-import "../styles/weatherStyle.css";
 
 function WeatherItem(props) {
 	const { label, value, unit, icon } = props;

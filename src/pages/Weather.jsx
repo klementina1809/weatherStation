@@ -7,8 +7,6 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import CurrentWeather from "../components/CurrentWeather";
 
-import "../styles/inputStyle.css";
-import "../styles/weatherStyle.css";
 
 function Weather() {
 	const [geocode, setGeocode] = useState([0, 0]);
@@ -43,9 +41,9 @@ function Weather() {
 	}, [geocode]);
 
 	return (
-		<Container>
-			<Row>
-				<Col sm={12} className="input-container">
+		<>
+			<Row className="center">
+				<Col sm={8} className="input-container">
 					<Input
 						onchange={inputHandler}
 						value={value}
@@ -54,17 +52,12 @@ function Weather() {
 					<Button className='btn' onClick={searchWeather} label="Search" />
 				</Col>
 			</Row>
-			<Row>
-				<Col sm={12}>
-					<h1>Current Weather in Florence</h1>
-				</Col>
-			</Row>
-			<Row>
-				<Col sm={12}>
+			<Row className="center">
+				<Col sm={8} className="weather-items-container">
 					<CurrentWeather />
 				</Col>
 			</Row>
-		</Container>
+		</>
 	);
 }
 

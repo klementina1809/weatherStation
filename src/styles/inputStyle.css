@@ -8,10 +8,10 @@
 }
 
 input {
+	flex: 1;
 	border-radius: 8px;
 	background-color: var(--color-light);
 	color: var(--color-primary);
-	width: 490px;
 	height: 60px;
 	padding-left: 10px;
 	font-size: 20px;

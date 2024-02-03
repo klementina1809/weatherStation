@@ -1,8 +1,8 @@
-.logo-container {
-	width: 240px;
-	margin: auto;
+.header {
+	border-bottom: 2px solid var(--color-primary);
 	margin-bottom: 32px;
+	padding-bottom: 20px;
 }
-.logo-container>img {
-	width: 100%;
+.header > img {
+	width: 240px;
 }
