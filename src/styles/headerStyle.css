@@ -6,3 +6,9 @@
 .header > img {
 	width: 240px;
 }
+
+.footer {
+	border-top: 2px solid var(--color-primary);
+	margin-top: 32px;
+	padding-top: 20px;
+}

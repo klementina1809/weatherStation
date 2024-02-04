@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-grid-system";
 function Footer() {
 	return (
 		<footer>
-			<Row>
+			<Row className="footer">
 				<Col sm={12}>© 2024 Klementina</Col>
 			</Row>
 		</footer>
