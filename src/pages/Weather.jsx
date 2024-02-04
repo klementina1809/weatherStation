@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-grid-system";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import CurrentWeather from "../components/CurrentWeather";
+import NextBox from "../components/NextBox";
 
 
 function Weather() {
@@ -55,6 +56,18 @@ function Weather() {
 			<Row className="center">
 				<Col sm={8} className="weather-items-container">
 					<CurrentWeather />
+				</Col>
+			</Row>
+			<Row className="center">
+				<Col sm={8} >
+					<h2>Next 48 hours</h2>
+					<NextBox />
+				</Col>
+			</Row>
+			<Row className="center">
+				<Col sm={8} >
+					<h2>Next week</h2>
+					<NextBox />
 				</Col>
 			</Row>
 		</>
