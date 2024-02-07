@@ -11,8 +11,12 @@
 
 h1 {
 	font-size: 32px;
-	margin-top: 50px;
+	margin-top: 24px;
 	font-weight: 700;
+}
+
+.loading{
+	width: 100px;
 }
 
 .item-container {

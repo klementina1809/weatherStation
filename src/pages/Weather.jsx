@@ -9,7 +9,7 @@ import CurrentWeather from "../components/CurrentWeather";
 import NextBox from "../components/NextBox";
 
 function Weather() {
-	const [geocode, setGeocode] = useState([0, 0]);
+	const [geocode, setGeocode] = useState([]);
 	const [value, setValue] = useState("");
 	const [city, setCity] = useState("");
 	const [weather, setWeather] = useState({
@@ -68,29 +68,39 @@ function Weather() {
 						onClick={searchWeather}
 						label="Search"
 					/>
-					{loading && <span>loading</span>}
 				</Col>
 			</Row>
 			<Row className="center">
-			<h1>Current Weather in {city}</h1>
-				<Col sm={8} className="weather-items-container">
-					<CurrentWeather
-						currentWeather={weather.current}
+				{loading && (
+					<img
+						className="loading"
+						src="/src/assets/loading.gif"
+						alt=""
 					/>
-				</Col>
+				)}
 			</Row>
-			<Row className="center">
-				<Col sm={8}>
-					<h2>Next 48 hours</h2>
-					<NextBox />
-				</Col>
-			</Row>
-			<Row className="center">
-				<Col sm={8}>
-					<h2>Next week</h2>
-					<NextBox />
-				</Col>
-			</Row>
+			{geocode.length > 0 && (
+				<>
+					<Row className="center">
+						<h1>Current Weather in {city}</h1>
+						<Col sm={8} className="weather-items-container">
+							<CurrentWeather currentWeather={weather.current} />
+						</Col>
+					</Row>
+					<Row className="center">
+						<Col sm={8}>
+							<h2>Next 48 hours</h2>
+							<NextBox />
+						</Col>
+					</Row>
+					<Row className="center">
+						<Col sm={8}>
+							<h2>Next week</h2>
+							<NextBox />
+						</Col>
+					</Row>
+				</>
+			)}
 		</>
 	);
 }
