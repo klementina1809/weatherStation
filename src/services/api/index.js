@@ -11,7 +11,7 @@ export const getProducts = async () => {
 
 export const getWeather = async (lat = 43.471199, lon = 11.86306) => {
 	const response = await axios.get(
-		`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${OW_API_KEY}`
+		`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${OW_API_KEY}`
 	);
 	return response.data ?? {};
 };
