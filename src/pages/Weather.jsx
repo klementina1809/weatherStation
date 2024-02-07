@@ -11,6 +11,7 @@ import NextBox from "../components/NextBox";
 function Weather() {
 	const [geocode, setGeocode] = useState([0, 0]);
 	const [value, setValue] = useState("");
+	const [city, setCity] = useState("");
 	const [weather, setWeather] = useState({
 		current: {
 			sunrise: "",
@@ -31,6 +32,7 @@ function Weather() {
 	};
 
 	const searchWeather = () => {
+		setCity(value);
 		async function getFirstData() {
 			const geo = await getGeoCode(value);
 			console.log("geo", geo);
@@ -70,8 +72,11 @@ function Weather() {
 				</Col>
 			</Row>
 			<Row className="center">
+			<h1>Current Weather in {city}</h1>
 				<Col sm={8} className="weather-items-container">
-					<CurrentWeather currentWeather={weather.current} />
+					<CurrentWeather
+						currentWeather={weather.current}
+					/>
 				</Col>
 			</Row>
 			<Row className="center">

@@ -11,7 +11,7 @@ function CurrentWeather(props) {
 	};
 	return (
 		<>
-			<h1>Current Weather in Florence</h1>
+			
 			<WeatherItem
 				label="Temperature"
 				value={currentWeather.temp}
