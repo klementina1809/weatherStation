@@ -11,7 +11,19 @@ import NextBox from "../components/NextBox";
 function Weather() {
 	const [geocode, setGeocode] = useState([0, 0]);
 	const [value, setValue] = useState("");
-	const [weather, setWeather] = useState({});
+	const [weather, setWeather] = useState({
+		current: {
+			sunrise: "",
+			sunset: "",
+			temp: 0,
+			pressure: 0,
+			humidity: 0,
+			clouds: 0,
+			uvi: 0,
+			visibility: 0,
+			wind_speed: 0,
+		},
+	});
 	const [loading, setLoading] = useState(false);
 
 	const inputHandler = (e) => {
