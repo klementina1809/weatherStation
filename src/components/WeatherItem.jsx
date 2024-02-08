@@ -6,12 +6,12 @@ function WeatherItem(props) {
 	return (
 		<div className="item-container">
 			<div className="visual-container">
-				<p>{label}</p>
+				<span>{label}</span>
 				<div className="icon-wrapper"><img src={icon} alt="" /></div>
 			</div>
 			<div className="value-container">
-				<p>{value}</p>
-				<p>{unit}</p>
+				<span>{value}</span>
+				<span>{unit}</span>
 			</div>
 		</div>
 	);

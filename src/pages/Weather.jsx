@@ -82,7 +82,7 @@ function Weather() {
 			{geocode.length > 0 && !loading && (
 				<>
 					<Row className="center">
-						<h1>Current Weather in {city}</h1>
+						<h1>Current Weather in <u>{city}</u></h1>
 						<Col sm={8} className="weather-items-container">
 							<CurrentWeather currentWeather={weather.current} />
 						</Col>

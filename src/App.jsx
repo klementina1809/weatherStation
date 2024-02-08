@@ -3,7 +3,7 @@ import Weather from "./pages/Weather";
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import "./App.css";
+
 import './styles/index.css'
 
 

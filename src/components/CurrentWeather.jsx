@@ -36,7 +36,7 @@ function CurrentWeather(props) {
 			<WeatherItem
 				label="UV"
 				value={currentWeather.uvi}
-				unit="/11"
+				unit="/ 11"
 				icon="/src/assets/icons/primary/tabler_sun.png"
 			/>
 
@@ -63,8 +63,8 @@ function CurrentWeather(props) {
 
 			<WeatherItem
 				label="Visibility"
-				value={currentWeather.visibility}
-				unit=" m"
+				value={currentWeather.visibility/1000}
+				unit=" km"
 				icon="/src/assets/icons/primary/material-symbols_visibility-outline.png"
 			/>
 
