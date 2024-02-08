@@ -79,7 +79,7 @@ function Weather() {
 					/>
 				)}
 			</Row>
-			{geocode.length > 0 && (
+			{geocode.length > 0 && !loading && (
 				<>
 					<Row className="center">
 						<h1>Current Weather in {city}</h1>

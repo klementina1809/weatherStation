@@ -55,6 +55,7 @@ h1 {
 	font-size: 20px;
 	background-color: var(--color-light);
 	border-radius: 0px 0px 8px 8px;
+	font-weight: 700;
 }
 
 .next-container {
