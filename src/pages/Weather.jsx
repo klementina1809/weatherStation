@@ -46,7 +46,7 @@ function Weather() {
 	useEffect(() => {
 		async function secondApi() {
 			const weather = await getWeather(geocode[0], geocode[1]);
-			console.log("w curent ", weather.current);
+			console.log("w", weather);
 			setWeather(weather);
 			setLoading(false);
 		}
@@ -90,13 +90,13 @@ function Weather() {
 					<Row className="center">
 						<Col sm={8}>
 							<h2>Next 48 hours</h2>
-							<NextBox />
+							{/* <NextBox item='hour'/> */}
 						</Col>
 					</Row>
 					<Row className="center">
 						<Col sm={8}>
 							<h2>Next week</h2>
-							<NextBox />
+							<NextBox item='day' data={weather.daily}/>
 						</Col>
 					</Row>
 				</>
