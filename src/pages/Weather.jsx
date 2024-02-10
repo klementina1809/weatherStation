@@ -54,6 +54,12 @@ function Weather() {
 		if (geocode[0] !== 0 && geocode[1] !== 0) secondApi();
 	}, [geocode]);
 
+	const handleKeyPress = (e) => {
+		if (e.key === "Enter") {
+			searchWeather();
+		}
+	};
+
 	return (
 		<>
 			<Row className="center">
@@ -62,6 +68,7 @@ function Weather() {
 						onchange={inputHandler}
 						value={value}
 						placeholder="Enter your city..."
+						onKeyDown={handleKeyPress}
 					/>
 					<Button
 						className="btn"
@@ -82,7 +89,7 @@ function Weather() {
 			{geocode.length > 0 && !loading && (
 				<>
 					<Row className="center">
-						<h1>Current Weather in <u>{city}</u></h1>
+						<h1>Current Weather in <u>{city.charAt(0).toUpperCase() + city.slice(1)}</u></h1>
 						<Col sm={8} className="weather-items-container">
 							<CurrentWeather currentWeather={weather.current} />
 						</Col>
@@ -90,7 +97,7 @@ function Weather() {
 					<Row className="center">
 						<Col sm={8}>
 							<h2>Next 48 hours</h2>
-							{/* <NextBox item='hour'/> */}
+							<NextBox item='hour' data={weather.hourly}/>
 						</Col>
 					</Row>
 					<Row className="center">

@@ -2,7 +2,7 @@ import React from "react";
 
 
 function Input(props) {
-	const { onchange, value, label, placeholder } = props;
+	const { onchange, value, label, placeholder, onKeyDown } = props;
 
 	return (
 		<input
@@ -10,6 +10,7 @@ function Input(props) {
 			onChange={onchange}
 			value={value}
 			placeholder={placeholder}
+			onKeyDown={onKeyDown}
 		/>
 	);
 }

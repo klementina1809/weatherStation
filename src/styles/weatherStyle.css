@@ -77,9 +77,16 @@ h1 {
 	align-items: center;
 	min-width: 60px;
 }
+.next-item :first-child{
+font-weight: 700;
+}
 
 .next-item > img {
 	width: 39px;
 	height: 39px;
 	margin: 10px 0px;
+}
+
+.next-item.hour {
+	margin: 0px 20px;
 }
