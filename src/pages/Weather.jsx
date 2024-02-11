@@ -63,7 +63,7 @@ function Weather() {
 	return (
 		<>
 			<Row className="center">
-				<Col sm={8} className="input-container">
+				<Col xl={8} xs={12} md={10} className="input-container">
 					<Input
 						onchange={inputHandler}
 						value={value}
@@ -90,18 +90,18 @@ function Weather() {
 				<>
 					<Row className="center">
 						<h1>Current Weather in <u>{city.charAt(0).toUpperCase() + city.slice(1)}</u></h1>
-						<Col sm={8} className="weather-items-container">
+						<Col xl={8} xs={12} sm={12} md={10} className="weather-items-container">
 							<CurrentWeather currentWeather={weather.current} />
 						</Col>
 					</Row>
 					<Row className="center">
-						<Col sm={8}>
+						<Col xl={8} xs={12} sm={12} md={10}>
 							<h2>Next 48 hours</h2>
 							<NextBox item='hour' data={weather.hourly}/>
 						</Col>
 					</Row>
 					<Row className="center">
-						<Col sm={8}>
+						<Col xl={8} xs={12} sm={12} md={10}>
 							<h2>Next week</h2>
 							<NextBox item='day' data={weather.daily}/>
 						</Col>

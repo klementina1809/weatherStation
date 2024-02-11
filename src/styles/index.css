@@ -2,3 +2,4 @@
 @import 'inputStyle.css';
 @import 'headerStyle.css';
 @import "/src/App.css";
+@import "@egjs/react-flicking/dist/flicking.css";

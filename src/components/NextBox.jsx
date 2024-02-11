@@ -1,6 +1,6 @@
 import React from "react";
 import Flicking from "@egjs/react-flicking";
-import "@egjs/react-flicking/dist/flicking.css";
+
 
 import NextDayItem from "./NextDayItem";
 import NextHourItem from "./NextHourItem";
@@ -12,15 +12,7 @@ function NextBox(props) {
 		const date = new Date(unix_data * 1000);
 		const weekDayNumber = date.getDay();
 		// Преобразование числа дня недели в соответствующее название
-		const weekDays = [
-			"Sun",
-			"Mon",
-			"Tue",
-			"Wed",
-			"Thu",
-			"Fri",
-			"Sat",
-		];
+		const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 		const weekDayName = weekDays[weekDayNumber];
 		return weekDayName;
 	};
@@ -35,10 +27,15 @@ function NextBox(props) {
 
 	return (
 		<div className="next-container">
-			{item === "day" &&
-				data
-					.slice(1)
-					.map((day) => (
+			{item === "day" && (
+				<Flicking
+					useFindDOMNode={true}
+					align="prev"
+					circular={false}
+					bound={true}
+					deceleration={0.0075}
+				>
+					{data.slice(1).map((day) => (
 						<NextDayItem
 							key={day.dt}
 							day={getWeekDay(day.dt)}
@@ -47,6 +44,8 @@ function NextBox(props) {
 							icon={day.weather[0].icon}
 						/>
 					))}
+				</Flicking>
+			)}
 			{item === "hour" && (
 				<Flicking
 					useFindDOMNode={true}
