@@ -62,7 +62,7 @@ function Weather() {
 
 	return (
 		<>
-			<Row className="center">
+			<Row className="center auto">
 				<Col xl={8} xs={12} md={10} className="input-container">
 					<Input
 						onchange={inputHandler}
@@ -77,7 +77,7 @@ function Weather() {
 					/>
 				</Col>
 			</Row>
-			<Row className="center">
+			<Row className="center auto">
 				{loading && (
 					<img
 						className="loading"
