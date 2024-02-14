@@ -16,16 +16,31 @@ export const getWeather = async (lat = 43.471199, lon = 11.86306) => {
 	return response.data ?? {};
 };
 
+// export const getGeoCode = async (city = "Arezzo") => {
+// 	const response = await axios.get(
+// 		`https://geocode.maps.co/search?city=${city}&api_key=${GC_API_KEY}`
+// 	);
+// 	if (response.data.length === 0) return {};
+// 	else {
+// 		const lat = response.data[0].lat;
+// 		const lon = response.data[0].lon;
+// 		const data = [lat, lon];
+// 		return data;
+// 	}
+// };
 export const getGeoCode = async (city = "Arezzo") => {
 	const response = await axios.get(
 		`https://geocode.maps.co/search?city=${city}&api_key=${GC_API_KEY}`
 	);
-	// console.log('response.data[0].lat',response.data[0].lat)
+	console.log("response.data", response.data);
 	if (response.data.length === 0) return {};
 	else {
 		const lat = response.data[0].lat;
 		const lon = response.data[0].lon;
 		const data = [lat, lon];
-		return data;
+		let options = [];
+		response.data.map((ob) => options.push(ob.display_name));
+		console.log('options', options)
+		return options;
 	}
 };

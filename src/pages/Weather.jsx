@@ -7,6 +7,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import CurrentWeather from "../components/CurrentWeather";
 import NextBox from "../components/NextBox";
+import CustomSelect from "../components/Select";
 
 function Weather() {
 	const [geocode, setGeocode] = useState([]);
@@ -30,12 +31,21 @@ function Weather() {
 	const inputHandler = (e) => {
 		setValue(e.target.value);
 	};
+	const inputHandlerSelect = (e) => {
+		setValue(e.target.value);
+		// if (timeoutId) {
+		// 	clearTimeout(timeoutId);
+		// }
+		// const timeoutId = setTimeout(() => {
+		// 	searchWeather(); 
+		// 	console.log("valueselect", e.target.value);
+		// }, 1000);
+	};
 
 	const searchWeather = () => {
 		setCity(value);
 		async function getFirstData() {
 			const geo = await getGeoCode(value);
-			console.log("geo", geo);
 			setGeocode(geo);
 		}
 		setLoading(true);
@@ -78,6 +88,14 @@ function Weather() {
 				</Col>
 			</Row>
 			<Row className="center auto">
+				<CustomSelect
+					onchange={inputHandlerSelect}
+					inputValue={value}
+					placeholder="Enter your city..."
+					options={geocode}
+				/>
+			</Row>
+			<Row className="center auto">
 				{loading && (
 					<img
 						className="loading"
@@ -89,21 +107,32 @@ function Weather() {
 			{geocode.length > 0 && !loading && (
 				<>
 					<Row className="center">
-						<h1>Current Weather in <u>{city.charAt(0).toUpperCase() + city.slice(1)}</u></h1>
-						<Col xl={8} xs={12} sm={12} md={10} className="weather-items-container">
+						<h1>
+							Current Weather in{" "}
+							<u>
+								{city.charAt(0).toUpperCase() + city.slice(1)}
+							</u>
+						</h1>
+						<Col
+							xl={8}
+							xs={12}
+							sm={12}
+							md={10}
+							className="weather-items-container"
+						>
 							<CurrentWeather currentWeather={weather.current} />
 						</Col>
 					</Row>
 					<Row className="center">
 						<Col xl={8} xs={12} sm={12} md={10}>
 							<h2>Next 48 hours</h2>
-							<NextBox item='hour' data={weather.hourly}/>
+							<NextBox item="hour" data={weather.hourly} />
 						</Col>
 					</Row>
 					<Row className="center">
 						<Col xl={8} xs={12} sm={12} md={10}>
 							<h2>Next week</h2>
-							<NextBox item='day' data={weather.daily}/>
+							<NextBox item="day" data={weather.daily} />
 						</Col>
 					</Row>
 				</>
