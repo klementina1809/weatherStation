@@ -1,28 +1,28 @@
 import React from "react";
 import AsyncSelect from "react-select/async";
-// import Select from 'react-select'
-import Async, { useAsync } from "react-select/async";
+import { getGeoCode } from "../services/api";
 
 function CustomSelect(props) {
 	const { onchange, inputValue, placeholder, options } = props;
 
-	const formOptions = (options) => {
-		return options.map((option) => ({
-			value: option,
-			label: option
-		}));
-	};
+	async function getGeoData(inputValue) {
+		const geo = await getGeoCode(inputValue);
+		console.log("geo-----", geo);
+		return geo.map((ob) => ({ value: ob, label: ob }));
+	}
 
-	const loadOptions = (inputValue, callback) => {
-		setTimeout(() => {
-			callback(formOptions(options));
-		}, 1000);
-	};
+	const loadOptions = (inputValue) =>
+		new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(getGeoData(inputValue));
+			}, 1000);
+		});
 
 	return (
 		<AsyncSelect
-			onChange={onchange}
-			value={inputValue}
+			//onChange={onchange}
+			cacheOptions
+			defaultOptions
 			placeholder={placeholder}
 			isSearchable={true}
 			loadOptions={loadOptions}
