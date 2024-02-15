@@ -16,7 +16,7 @@ export const getWeather = async (lat = 43.471199, lon = 11.86306) => {
 	return response.data ?? {};
 };
 
-// export const getGeoCode = async (city = "Arezzo") => {
+// export const getGeoInfo = async (city = "Arezzo") => {
 // 	const response = await axios.get(
 // 		`https://geocode.maps.co/search?city=${city}&api_key=${GC_API_KEY}`
 // 	);
@@ -28,19 +28,27 @@ export const getWeather = async (lat = 43.471199, lon = 11.86306) => {
 // 		return data;
 // 	}
 // };
-export const getGeoCode = async (city = "Arezzo") => {
+export const getGeoInfo = async (city = "Arezzo") => {
 	const response = await axios.get(
 		`https://geocode.maps.co/search?city=${city}&api_key=${GC_API_KEY}`
 	);
 	console.log("response.data", response.data);
 	if (response.data.length === 0) return {};
 	else {
-		const lat = response.data[0].lat;
-		const lon = response.data[0].lon;
-		const data = [lat, lon];
 		let options = [];
-		response.data.map((ob) => options.push(ob.display_name));
-		console.log('options', options)
+		response.data.map((ob) => {
+			const parts = ob.display_name.split(",");
+			const name = [parts[0], parts[1], parts[parts.length - 1]].join(
+				","
+			);
+			options.push({
+				id: ob.place_id,
+				name: name,
+				lat: ob.lat,
+				lon: ob.lon,
+			});
+		});
+		console.log("options", options);
 		return options;
 	}
 };

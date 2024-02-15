@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select/async";
-import { getGeoCode } from "../services/api";
+import { getGeoInfo } from "../services/api";
 import debounce from "debounce-promise";
 
 const getOptions = debounce(async (value) => {
@@ -8,12 +8,20 @@ const getOptions = debounce(async (value) => {
 		return Promise.resolve({ options: [] });
 	}
 
-	const response = await getGeoCode(value);
-	return response.map((ob) => ({ value: ob, label: ob }));
-}, 400);
+	const response = await getGeoInfo(value);
+	return response.map((ob) => ({ ...ob, value: ob.name, label: ob.name }));
+}, 500);
 
 function CustomSelect(props) {
-	return <Select loadOptions={getOptions} />;
+	const { placeholder, onchange} = props;
+
+	return (
+		<Select
+			placeholder={placeholder}
+			loadOptions={getOptions}
+			onChange={onchange}
+		/>
+	);
 }
 
 export default CustomSelect;

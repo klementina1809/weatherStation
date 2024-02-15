@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getWeather, getGeoCode } from "../services/api";
+import { getWeather, getGeoInfo } from "../services/api";
 import { Row, Col } from "react-grid-system";
 
 import Input from "../components/Input";
@@ -28,30 +28,11 @@ function Weather() {
 	});
 	const [loading, setLoading] = useState(false);
 
-	const inputHandler = (e) => {
-		setValue(e.target.value);
-	};
-
-	const inputHandlerSelect = (e) => {
-		setValue(e.target.value);
-		// if (timeoutId) {
-		// 	clearTimeout(timeoutId);
-		// }
-		// const timeoutId = setTimeout(() => {
-		// 	searchWeather();
-		// 	console.log("valueselect", e.target.value);
-		// }, 1000);
-	};
-
-	const searchWeather = () => {
-		setCity(value);
-		async function getFirstData() {
-			const geo = await getGeoCode(value);
-			setGeocode(geo);
-		}
+	const selectHandler = (e) => {
+		setValue(e.value);
+		setGeocode([e.lat, e.lon]);
 		setLoading(true);
-
-		getFirstData();
+		setCity(e.name.split(",")[0].trim());
 	};
 
 	useEffect(() => {
@@ -65,36 +46,23 @@ function Weather() {
 		if (geocode[0] !== 0 && geocode[1] !== 0) secondApi();
 	}, [geocode]);
 
-	const handleKeyPress = (e) => {
-		if (e.key === "Enter") {
-			searchWeather();
-		}
-	};
-
 	return (
 		<>
 			<Row className="center auto">
 				<Col xl={8} xs={12} md={10} className="input-container">
-					<Input
-						onchange={inputHandler}
-						value={value}
+					<CustomSelect
+						onchange={selectHandler}
 						placeholder="Enter your city..."
-						onKeyDown={handleKeyPress}
 					/>
-					<Button className="btn" onClick={searchWeather} label="Search" />
 				</Col>
 			</Row>
 			<Row className="center auto">
-				<CustomSelect
-					onchange={inputHandlerSelect}
-					inputValue={value}
-					placeholder="Enter your city..."
-					options={geocode}
-				/>
-			</Row>
-			<Row className="center auto">
 				{loading && (
-					<img className="loading" src="/src/assets/loading.gif" alt="" />
+					<img
+						className="loading"
+						src="/src/assets/loading.gif"
+						alt=""
+					/>
 				)}
 			</Row>
 			{geocode.length > 0 && !loading && (
@@ -102,7 +70,9 @@ function Weather() {
 					<Row className="center">
 						<h1>
 							Current Weather in{" "}
-							<u>{city.charAt(0).toUpperCase() + city.slice(1)}</u>
+							<u>
+								{city.charAt(0).toUpperCase() + city.slice(1)}
+							</u>
 						</h1>
 						<Col
 							xl={8}
