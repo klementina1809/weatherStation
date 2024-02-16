@@ -49,7 +49,7 @@ function Weather() {
 	return (
 		<>
 			<Row className="center auto">
-				<Col xl={8} xs={12} md={10} className="input-container">
+				<Col xl={6} xs={12} md={8} className="input-container">
 					<CustomSelect
 						onchange={selectHandler}
 						placeholder="Enter your city..."
