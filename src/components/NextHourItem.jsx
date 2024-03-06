@@ -7,7 +7,7 @@ function NextHourItem(props) {
 	return (
 		<div className="next-item hour">
 			<span>{hour}:00</span>
-			<img src={`/src/assets/icons/weather/${icon}.png`} alt="" />
+			<img src={`./assets/icons/weather/${icon}.png`} alt="" />
 			<span>{temp}°</span>
 		</div>
 	);

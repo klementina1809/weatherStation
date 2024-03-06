@@ -6,7 +6,7 @@ function NextDayItem(props) {
 	return (
 		<div className="next-item">
 			<span>{day}</span>
-			<img src={`/src/assets/icons/weather/${icon}.png`} alt="" />
+			<img src={`./assets/icons/weather/${icon}.png`} alt="" />
 			<span>{max}° {min}°</span>
 		</div>
 	);

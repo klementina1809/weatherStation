@@ -60,7 +60,7 @@ function Weather() {
 				{loading && (
 					<img
 						className="loading"
-						src="/src/assets/loading.gif"
+						src="./assets/loading.gif"
 						alt=""
 					/>
 				)}
