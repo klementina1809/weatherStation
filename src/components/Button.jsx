@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function Button(props) {
 	const { onClick, label, className } = props;
 

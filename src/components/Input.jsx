@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function Input(props) {
 	const { onchange, value, label, placeholder, onKeyDown } = props;
 

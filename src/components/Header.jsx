@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Row, Col } from "react-grid-system";
+import { Row} from "react-grid-system";
 
 function Header() {
 	return (
